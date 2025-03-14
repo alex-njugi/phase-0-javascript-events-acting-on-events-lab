@@ -1,15 +1,21 @@
 const dodger = document.getElementById("dodger");
 
 function moveDodgerLeft() {
-  const left = parseInt(dodger.style.left.replace("px", ""), 10);
+  const leftNumbers = dodger.style.left.replace("px", "");
+  const left = parseInt(leftNumbers, 10);
+
   if (left > 0) {
     dodger.style.left = `${left - 1}px`;
   }
 }
 
 function moveDodgerRight() {
-  const left = parseInt(dodger.style.left.replace("px", ""), 10);
-  if (left < 360) { // 400px game width - 40px dodger width
+  const leftNumbers = dodger.style.left.replace("px", "");
+  const left = parseInt(leftNumbers, 10);
+  const gameWidth = 400;
+  const dodgerWidth = 40;
+
+  if (left < gameWidth - dodgerWidth) {
     dodger.style.left = `${left + 1}px`;
   }
 }
@@ -21,4 +27,3 @@ document.addEventListener("keydown", function (e) {
     moveDodgerRight();
   }
 });
-
